@@ -1,0 +1,10 @@
+ollama
+openai-whisper
+pvporcupine
+pyaudio
+sounddevice
+soundfile
+numpy
+pyttsx3
+torch
+transformers
