@@ -1,156 +1,240 @@
-🤖 Friday AI Assistant
+# 🎙️ It's Friday
 
-Friday is a fully local, voice-enabled AI assistant with memory, emotional awareness, and real-time interaction — designed for privacy, responsiveness, and extensibility.
+A local AI voice assistant inspired by JARVIS and Friday from the Marvel universe.
 
-✨ Features
-🎙️ Voice + Text Interaction
-Wake-word activated assistant
-Real-time voice command capture
-Parallel text input mode
-Smooth switching between input methods
+Friday combines:
 
-🧠 Local AI (Offline-First)
-Powered by Ollama
-Uses LLaMA 3
-No cloud dependency — runs entirely locally
+- 🧠 Local LLM powered by Ollama
+- 🎤 Speech-to-Text transcription
+- 🔊 Text-to-Speech responses
+- 🎧 Wake-word detection
+- 💾 Persistent memory
+- 😊 Emotion tracking
+- ⌨️ Text and Voice interaction modes
 
-💬 Memory System
-Short-term memory (conversation context)
-Long-term memory stored in fridays_memory.json
-Automatically remembers:
-Preferences
-Facts about the user
-Past conversations
+Everything runs locally on your machine for privacy and customization.
 
-😊 Emotional Awareness
-Detects tone from user input:
-Friendly
-Concerned
-Enthusiastic
-Gentle
-Dynamically adapts personality and responses
-Emotion decay resets mood over time
+---
 
-🔊 Text-to-Speech
-High-quality local speech using Piper TTS
-Custom voice model support
-Real-time playback
+# Features
 
-🎧 Wake Word Detection
-Powered by openWakeWord
-Always-on listening with low resource usage
-Debounce protection against false triggers
+### 🎧 Wake Word Activation
+Activate Friday using a custom wake word and interact naturally through your microphone.
 
-📝 Speech Recognition
-Fast transcription via faster-whisper
-Works locally without internet
+### 💬 Chat Mode
+Type directly into the console and receive responses instantly.
 
-⚡ Multithreaded System
-Voice input, text input, and processing run concurrently
-Responsive, non-blocking experience
+### 🧠 Local AI
+Powered by Ollama and Llama 3.
 
-🚀 Demo Flow
-Say wake word → “Hey Mycroft”
-Friday responds: “I’m listening.”
-Speak your command
-Friday:
-Transcribes speech
-Thinks 🤖
-Responds (text + voice)
+No cloud API keys required.
 
-OR
+### 💾 Persistent Memory
+Friday remembers:
 
-👉 Type directly in the terminal
+- Previous conversations
+- User facts
+- Preferences
 
-🛠️ Installation
-1. Clone the repo
-git clone https://github.com/yourusername/friday-ai.git
-cd friday-ai
-2. Install dependencies
-pip install -r requirements.txt
-3. Install & Setup Ollama
+Memory is stored in:
 
-Install Ollama and pull model:
+```text
+fridays_memory.json
+```
 
-ollama run llama3
-4. Setup Piper TTS
-Download Piper TTS
-Download a voice model (e.g. en_GB-alba-medium)
+### 😊 Emotion Engine
+Tracks conversational sentiment and user interactions.
 
-Update paths in code:
+### 🔊 Voice Responses
+Friday speaks responses using Text-to-Speech.
 
-PIPER_EXE = r"C:\piper\piper.exe"
-PIPER_MODEL = r"C:\piper\voices\en_GB-alba-medium.onnx"
+---
 
-5. Run the assistant
-python main.py
+# Project Structure
 
-⚙️ Configuration
-You can tweak:
-Parameter	Description
-THRESHOLD	Wake word sensitivity
-COMMAND_DURATION	Recording time
-SAMPLE_RATE	Audio quality
-MAX_TURNS	Short-term memory size
-Memory limits	Long-term storage size
-
-📁 Project Structure
-friday-ai/
+```text
+Project-Its_Friday/
 │
-├── main.py
-├── fridays_memory.json
+├── Its-Friday.py
+│
+├── ai/
+│   └── llm.py
+│
 ├── audio/
+│   ├── recorder.py
+│   ├── transcriber.py
+│   ├── tts.py
+│   └── wake_word.py
+│
+├── core/
+│   ├── assistant.py
+│   ├── emotion.py
+│   └── memory.py
+│
+├── utils/
+│   └── thinking.py
+│
+├── fridays_memory.json
+├── requirements.txt
 └── README.md
+```
 
-🧠 How Memory Works
-Short-Term Memory
-Stored in conversation
-Limited to last N turns
-Long-Term Memory
+---
 
-Stored in:
+# Requirements
 
+- Python 3.10+
+- Ollama
+- Llama 3
+
+Install Ollama:
+
+https://ollama.com
+
+Pull the model:
+
+```bash
+ollama pull llama3
+```
+
+---
+
+# Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/aaj45/Project-Its_Friday.git
+```
+
+Navigate to the project:
+
+```bash
+cd Project-Its_Friday
+```
+
+Create a virtual environment:
+
+```bash
+python -m venv jarvis-env
+```
+
+Activate it:
+
+### Windows
+
+```bash
+jarvis-env\Scripts\activate
+```
+
+### Linux / macOS
+
+```bash
+source jarvis-env/bin/activate
+```
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+# Running Friday
+
+Start Ollama:
+
+```bash
+ollama serve
+```
+
+Run the assistant:
+
+```bash
+python Its-Friday.py
+```
+
+Expected output:
+
+```text
+🎙️ Friday is ready.
+🎧 Wake word listener started...
+💬 You:
+```
+
+---
+
+# Memory System
+
+Friday stores:
+
+```json
 {
   "facts": [],
   "dialogue": []
 }
-Facts extracted from phrases like:
-“I like…”
-“My name is…”
-Dialogue history retained (capped)
+```
 
-⚠️ Known Limitations
-Emotion detection is keyword-based
-No multi-user support
-Wake word is fixed
-Memory is not semantic (no embeddings yet)
-CPU-only by default (slower on low-end systems)
-🔮 Roadmap
-🧠 Vector database memory (semantic recall)
-👤 Multi-user recognition
-🔌 Plugin/tool system (apps, automation)
-🎯 Custom wake word training
-⚡ GPU acceleration
-🎭 Advanced emotion modelling
+Examples of remembered facts:
 
-🙌 Acknowledgements
-Ollama
-openWakeWord
-faster-whisper
-Piper TTS
+```text
+My name is Akif.
+My favourite colour is blue.
+I live in Sandbach.
+```
 
-📜 License
-MIT License (recommended — update if needed)
+These facts are automatically loaded on startup.
 
-👤 Author
-Akif Jabir
+---
 
-💡 Final Note
+# Shutdown Commands
 
-Friday is built as a fully local AI assistant combining:
+Friday can be stopped using:
 
-Voice interaction
-Memory
-Personality
+```text
+exit
+shutdown
+goodbye
+good bye
+go to sleep
+```
 
-The goal is to create a private, intelligent, and extensible assistant that runs entirely on your machine
+These commands work in both Voice Mode and Text Mode.
+
+---
+
+# Future Improvements
+
+- Web search integration
+- Calendar management
+- Email integration
+- Home automation
+- Vision support
+- Face recognition
+- Long-term vector memory
+- Multi-agent architecture
+
+---
+
+# Contributing
+
+Contributions, suggestions, and pull requests are welcome.
+
+If you find a bug or have an idea for a new feature, please open an issue.
+
+---
+
+# Author
+
+**Akif Jabir**
+
+Built as a personal AI assistant project inspired by JARVIS and Friday.
+
+---
+
+# License
+
+This project is licensed under the MIT License.
+
+Feel free to use, modify, and distribute it.
