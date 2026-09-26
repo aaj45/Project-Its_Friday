@@ -227,7 +227,7 @@ If you find a bug or have an idea for a new feature, please open an issue.
 
 # Author
 
-**Akif Jawad**
+**Akif Jabir**
 
 Built as a personal AI assistant project inspired by JARVIS and Friday.
 
