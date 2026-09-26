@@ -1,0 +1,21 @@
+its-friday/
+│
+├── main.py                # Entry point (clean, minimal)
+│
+├── core/
+│   ├── assistant.py      # Orchestrates everything
+│   ├── emotion.py        # Emotion state logic
+│   ├── memory.py         # Long-term + short-term memory
+│
+├── audio/
+│   ├── wake_word.py      # Wake word detection
+│   ├── recorder.py       # Audio recording
+│   ├── transcriber.py    # Whisper wrapper
+│   ├── tts.py            # Piper speech
+│
+├── ai/
+│   ├── llm.py            # Ollama interaction
+│
+├── utils/
+│   ├── config.py         # Constants/config
+│   ├── logger.py         # Optional logging
